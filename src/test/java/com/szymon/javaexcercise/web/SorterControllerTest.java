@@ -23,7 +23,7 @@ public class SorterControllerTest {
 
     @Test
     public void testIsMasked() throws Exception {
-        HttpSession session = this.mockMvc.perform(post("/submitOne").param("bank", "test").param("number", "1234123412341234").param("date","Nov-2019")).andExpect(status().is3xxRedirection()).andReturn().getRequest().getSession();
+        HttpSession session = this.mockMvc.perform(post("/submitOne").param("bank", "test").param("number", "1234123412341234").param("date", "Nov-2019")).andExpect(status().is3xxRedirection()).andReturn().getRequest().getSession();
         assert session != null;
         String body = this.mockMvc.perform(get("/view").session((MockHttpSession) session)).andReturn().getResponse().getContentAsString();
         System.out.println(body);
@@ -34,12 +34,12 @@ public class SorterControllerTest {
 
     @Test
     public void testIsSorted() throws Exception {
-        HttpSession session = this.mockMvc.perform(post("/submitOne").param("bank", "thisBankShouldBeFirst").param("number", "1234123412341234").param("date","Nov-2019")).andExpect(status().is3xxRedirection()).andReturn().getRequest().getSession();
+        HttpSession session = this.mockMvc.perform(post("/submitOne").param("bank", "thisBankShouldBeFirst").param("number", "1234123412341234").param("date", "Nov-2019")).andExpect(status().is3xxRedirection()).andReturn().getRequest().getSession();
         assert session != null;
-        session = this.mockMvc.perform(post("/submitOne").session((MockHttpSession) session).param("bank", "thisBankShouldBeSecond").param("number", "1234123412341234").param("date","Nov-2018")).andExpect(status().is3xxRedirection()).andReturn().getRequest().getSession();
+        session = this.mockMvc.perform(post("/submitOne").session((MockHttpSession) session).param("bank", "thisBankShouldBeSecond").param("number", "1234123412341234").param("date", "Nov-2018")).andExpect(status().is3xxRedirection()).andReturn().getRequest().getSession();
         assert session != null;
         String body = this.mockMvc.perform(get("/view").session((MockHttpSession) session)).andReturn().getResponse().getContentAsString();
         System.out.println(body);
-        assert body.indexOf("thisBankShouldBeFirst")<body.indexOf("thisBankShouldBeSecond");
+        assert body.indexOf("thisBankShouldBeFirst") < body.indexOf("thisBankShouldBeSecond");
     }
 }
