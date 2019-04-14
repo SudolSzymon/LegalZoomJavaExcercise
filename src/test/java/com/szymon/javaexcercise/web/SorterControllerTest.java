@@ -27,7 +27,7 @@ public class SorterControllerTest {
         assert session != null;
         String body = this.mockMvc.perform(get("/view").session((MockHttpSession) session)).andReturn().getResponse().getContentAsString();
         System.out.println(body);
-        assert body.contains("1234xxxxxxxxxxxx");
+        assert body.contains("1234-xxxx-xxxx-xxxx");
         assert !body.contains("1234123412341234");
     }
 
