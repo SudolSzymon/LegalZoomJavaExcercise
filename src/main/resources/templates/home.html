@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<h2>Submit CSV</h2>
+
+<form action="/submitCSV" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Data CSV</label><br>
+        <input type="file" name="file" accept=".csv" required/>
+    </div>
+    <br/><br/>
+    <div class="form-group">
+        <button type="submit" id="upload">Upload</button>
+    </div>
+</form>
+
+<h2>Submit one entry</h2>
+
+<form action="/submitOne" method="post">
+    Bank:<br>
+    <input type="text" name="bank" required>
+    <br>
+    Card Number<br>
+    <input type="text" name="number" pattern="^(\d{4}[- ]){3}\d{4}|\d{16}$" required>
+    <br>
+    Expiry Date<br>
+    <input type="text" name="date" pattern="^[a-zA-Z]{3}-\d{4}$" required>
+    <br>
+    <input type="submit" value="Submit" required>
+</form>
+
+<br>
+<br>
+<a href="/view">
+    <button>View data</button>
+</a>
+</html>

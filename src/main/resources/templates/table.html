@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+</head>
+<body>
+<h3>Details List</h3>
+<br/>
+<table border="1">
+    <tr>
+        <td>Bank</td>
+        <td>Number</td>
+        <td>Date</td>
+    </tr>
+    <tr th:each="entry : ${data}">
+        <td th:text="${entry.getLeft()}">id</td>
+        <td th:text="${entry.getMiddle()}">name</td>
+        <td th:text="${entry.getRightFormatted()}">age</td>
+    </tr>
+</table>
+</body>
+</html>
